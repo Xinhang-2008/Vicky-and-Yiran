@@ -1,0 +1,70 @@
+def printMenu():
+    print('''
+          Customer and Sales System\n
+          1. Enter Customer Information\n
+          2. Generate Customer data file\n
+          3. Report on total Sales (Not done in this part)\n
+          4. Check for fraud in sales data (Not done in this part)\n
+          9. Quit\n
+          Enter menu option (1-9)
+          ''')
+ 
+import csv
+
+def enterCustomerInfo():
+    first_name=input("Enter youe first name:")
+    last_name= input("Enter youe first name:")
+    city=input("Enter your city:")
+    postel_code=input("Enter your PostalCode:")
+    while not validatePostalCode(postel_code):
+        print("Invalid postlal code.")
+        postal_code = input ("")
+    while not validatePostalCode(credit_card):  
+        credit_card =input ("Enter your credit card number:")
+
+    pass    # Remove this pass statement and add your own code below
+
+
+def validatePostalCode(postel_code):
+    if len(postel_code)<3:
+        print("Post code must be at least 3 characters in length")
+        return False
+    #Check if the first 3 
+    with open("postal_codes.csv","r",encoding='ISO-8859-1') as file:
+         reader = csv.reader(file,delimiter="|")
+         next(reader) #skip the header
+         for row in reader:
+            if postel_code[0:3]==row[0]:
+                return True
+    print("The first 3 character must match the postale codes  laodede from the file 'postal_codes.csv'")
+    return False
+
+    
+userInput = ""
+enterCustomerOption = "1"
+generateCustomerOption = "2"
+exitCondition = "9"
+
+# More variables for the main may be declared in the space below
+
+all_customer_data=[]
+while userInput != exitCondition:
+    printMenu()                 # Printing out the main menu
+    userInput = input();        # User selection from the menu
+
+    if userInput == enterCustomerOption:
+        # Only the line below may be editted based on the parameter list and how you design the method return
+        # Any necessary variables may be added to this if section, but nowhere else in the code
+        all_customer_data.append(enterCustomerInfo())
+
+
+    elif userInput == generateCustomerOption: 
+        # Only the line below may be editted based on the parameter list and how you design the method return
+        generateCustomerDataFile()
+
+    else:
+        print("Please type in a valid option (A number from 1-9)")
+
+#Exits once the user types 1
+
+print("Program Terminated")
