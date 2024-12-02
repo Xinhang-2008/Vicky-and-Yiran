@@ -1,3 +1,6 @@
+import csv
+import os
+import sys
 def printMenu():
     print('''
           Customer and Sales System\n
@@ -45,7 +48,6 @@ enterCustomerOption = "1"
 generateCustomerOption = "2"
 exitCondition = "9"
 
-# More variables for the main may be declared in the space below
 
 all_customer_data=[]
 while userInput != exitCondition:
@@ -53,18 +55,14 @@ while userInput != exitCondition:
     userInput = input();        # User selection from the menu
 
     if userInput == enterCustomerOption:
-        # Only the line below may be editted based on the parameter list and how you design the method return
-        # Any necessary variables may be added to this if section, but nowhere else in the code
         all_customer_data.append(enterCustomerInfo())
 
 
     elif userInput == generateCustomerOption: 
-        # Only the line below may be editted based on the parameter list and how you design the method return
         generateCustomerDataFile()
 
     else:
         print("Please type in a valid option (A number from 1-9)")
 
-#Exits once the user types 1
 
 print("Program Terminated")
